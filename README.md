@@ -1,0 +1,1 @@
+No SQL schema design
