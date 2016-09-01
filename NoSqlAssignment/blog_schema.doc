@@ -1,0 +1,91 @@
+
+Following schema is for collection posts:
+
+{
+	_id:"id of post" ,
+	heading : "Title of the post" ,
+	
+	content : "Contains description of post in form of text, images, html files etc" ,
+	
+	made_by : "Username of the post" ,
+	
+	
+	tags : ["tag1","tag2"] ,
+	
+	created : "date of post" ,
+	
+	comments : [
+			{
+			    user_id : "specifies id of user who commented" ,
+				user_name : "user name of the user who commented" ,
+				statement : "the comment posted by user " ,
+				commenting_timestamp: "commenting timestamp",
+				replies : [
+					{
+						user_id : "specifies id of user who replied on comment" ,
+						user_name : "user name of the user who replied" ,
+						statement : "the statement posted by user " ,
+						replying_timestamp: "replying timestamp"
+					},
+					{
+						user_id : "specifies id of user who replied on comment" ,
+						user_name : "user name of the user who replied" ,
+						statement : "the statement posted by user " ,
+						replying_timestamp: "replying timestamp"
+					}]
+			},
+			{
+				user_id : "specifies id of user who commented" ,
+				user_name : "user name of the user who commented" ,
+				statement : "the comment posted by user " ,
+				commenting_timestamp: "commenting timestamp",
+				replies : [
+					{
+						user_id : "specifies id of user who replied on comment" ,
+						user_name : "user name of the user who replied" ,
+						statement : "the statement posted by user " ,
+						replying_timestamp: "replying timestamp"
+					},
+					{
+						user_id : "specifies id of user who replied on comment" ,
+						user_name : "user name of the user who replied" ,
+						statement : "the statement posted by user " ,
+						replying_timestamp: "replying timestamp"
+					}]
+			}
+		]
+}
+
+
+Following schema is for collection users:
+
+{
+	_id:"specifies user id" ,
+	login:
+		{
+			email : "email id of user" ,
+			password : "password of the user",
+			status : "specifies whether user has logged in or not" ,
+		} ,
+
+	profile : 
+		{
+			user_name : "user name " ,
+			profession : "profession of user " ,
+			interest : "specify your interest" ,
+			contact :
+				{
+					email : "email of user" ,
+					contact : "contact no" 
+				}
+		} ,
+
+	role :
+		{
+			title : "specifies whether the user is normal user , editor, admin ,superadmin ,etc " ,
+			post_ids :["post_id1","post_id2"] ,
+			user_ids : ["user_id1","user_id2"] 
+
+		}
+
+}

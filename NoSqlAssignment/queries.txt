@@ -1,0 +1,21 @@
+
+-Add a new comment to a post
+ db.posts.update(  { "_id" : ObjectId("57c54e7d8f415725b8fc402e")},  {$push:  {"comments":{"user_id" : ObjectId("57c410e93549102560f94e70"),"statement" : "Nice one","commented_on":"31-10-2016"}  }  }  );
+- Update a comment of a post
+db.posts.update(
+{"comments.statement" :"Hello"},
+{$set: { "comments.$.statement" :"Hello"}
+}
+);
+
+- Delete one comment of a post
+db.posts.update(
+{"_id" : ObjectId("57c512967e26397eca5f5266")},
+{$pull:{"comments" : {"statement": "cool one"}}}
+);
+
+- Get a count of comments for all the posts
+db.posts.aggregate(  {$match:{"_id" : ObjectId("57c54e7d8f415725b8fc402e")}},  {$project:   {count:{$size:"$comments"}}  }  );
+
+- List posts with more than two comments
+db.posts.aggregate([{"$project" : {"created" : "$made_by","count" : {"$size" : "$comments"}}},{"$match" : {"count" : {"$gt" : 2}}}]);
